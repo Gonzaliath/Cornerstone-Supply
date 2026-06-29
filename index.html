@@ -1,0 +1,782 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>CS Hardware & Outdoor Supply</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <style>
+    :root {
+      --bg-dark: #0b0d10;
+      --cream: #f4e4c8;
+      --orange: #f47a1f;
+      --orange-dark: #c85f16;
+      --green: #1f4b2c;
+      --accent-blue: #2b5f7a;
+      --text-muted: #c0c4cc;
+      --card-bg: #151920;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background: radial-gradient(circle at top, #1b2735 0, #090a0f 55%, #050608 100%);
+      color: var(--cream);
+      line-height: 1.6;
+    }
+
+    img {
+      max-width: 100%;
+      display: block;
+    }
+
+    .page {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    header {
+      padding: 1.5rem 1.5rem 0.5rem;
+      text-align: center;
+      color: var(--text-muted);
+      font-size: 0.9rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    header span {
+      color: var(--orange);
+      font-weight: 600;
+    }
+
+    main {
+      flex: 1;
+      padding: 1.5rem;
+      max-width: 1120px;
+      margin: 0 auto 2.5rem;
+    }
+
+    .hero {
+      display: grid;
+      grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr);
+      gap: 2.5rem;
+      align-items: center;
+      margin-bottom: 3rem;
+    }
+
+    @media (max-width: 800px) {
+      .hero {
+        grid-template-columns: minmax(0, 1fr);
+        text-align: center;
+      }
+    }
+
+    .hero-copy h1 {
+      font-size: clamp(2.4rem, 4vw, 3.2rem);
+      line-height: 1.1;
+      margin-bottom: 1rem;
+    }
+
+    .hero-copy h1 span {
+      color: var(--orange);
+    }
+
+    .hero-copy p.lead {
+      font-size: 1.05rem;
+      color: var(--text-muted);
+      max-width: 32rem;
+      margin-bottom: 1.5rem;
+    }
+
+    @media (max-width: 800px) {
+      .hero-copy p.lead {
+        margin-inline: auto;
+      }
+    }
+
+    .hero-badges {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+      margin-bottom: 1.75rem;
+    }
+
+    @media (max-width: 800px) {
+      .hero-badges {
+        justify-content: center;
+      }
+    }
+
+    .badge {
+      border-radius: 999px;
+      border: 1px solid rgba(244, 228, 200, 0.18);
+      padding: 0.35rem 0.9rem;
+      font-size: 0.8rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      background: linear-gradient(135deg, rgba(21, 25, 32, 0.9), rgba(9, 10, 15, 0.9));
+    }
+
+    .badge-dot {
+      width: 0.4rem;
+      height: 0.4rem;
+      border-radius: 999px;
+      background: var(--orange);
+      box-shadow: 0 0 0 4px rgba(244, 122, 31, 0.25);
+    }
+
+    .hero-cta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.9rem;
+      align-items: center;
+    }
+
+    @media (max-width: 800px) {
+      .hero-cta {
+        justify-content: center;
+      }
+    }
+
+    .btn-primary {
+      border: none;
+      cursor: pointer;
+      border-radius: 999px;
+      padding: 0.85rem 1.8rem;
+      font-size: 0.95rem;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: #050608;
+      background: linear-gradient(135deg, var(--orange), var(--orange-dark));
+      box-shadow:
+        0 12px 30px rgba(0, 0, 0, 0.6),
+        0 0 0 1px rgba(0, 0, 0, 0.7);
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      transition: transform 0.15s ease, box-shadow 0.15s ease, filter 0.15s ease;
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-1px);
+      filter: brightness(1.05);
+      box-shadow:
+        0 16px 40px rgba(0, 0, 0, 0.75),
+        0 0 0 1px rgba(0, 0, 0, 0.8);
+    }
+
+    .btn-secondary {
+      border-radius: 999px;
+      padding: 0.8rem 1.6rem;
+      font-size: 0.9rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      border: 1px solid rgba(244, 228, 200, 0.3);
+      background: transparent;
+      color: var(--cream);
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      cursor: pointer;
+      transition: background 0.15s ease, border-color 0.15s ease;
+    }
+
+    .btn-secondary:hover {
+      background: rgba(21, 25, 32, 0.9);
+      border-color: rgba(244, 228, 200, 0.6);
+    }
+
+    .hero-cta small {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+    }
+
+    .hero-logo {
+      display: flex;
+      justify-content: center;
+    }
+
+    .logo-card {
+      width: min(360px, 100%);
+      aspect-ratio: 1 / 1;
+      border-radius: 999px;
+      padding: 0.9rem;
+      background:
+        radial-gradient(circle at top, rgba(244, 122, 31, 0.3), transparent 55%),
+        radial-gradient(circle at bottom, rgba(31, 75, 44, 0.4), transparent 60%),
+        #050608;
+      box-shadow:
+        0 18px 60px rgba(0, 0, 0, 0.9),
+        0 0 0 1px rgba(244, 228, 200, 0.08);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .logo-inner-ring {
+      width: 100%;
+      height: 100%;
+      border-radius: 999px;
+      border: 2px solid rgba(244, 228, 200, 0.4);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      overflow: hidden;
+      background: radial-gradient(circle at top, #1b2735 0, #050608 70%);
+    }
+
+    .logo-text-ring {
+      position: absolute;
+      inset: 0.9rem;
+      border-radius: 999px;
+      border: 1px solid rgba(244, 228, 200, 0.35);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      pointer-events: none;
+    }
+
+    .logo-text-ring::before,
+    .logo-text-ring::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      border-radius: inherit;
+      border: 1px dashed rgba(244, 228, 200, 0.12);
+    }
+
+    .logo-text-ring span {
+      position: absolute;
+      font-size: 0.65rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--cream);
+    }
+
+    .logo-text-top {
+      top: 0.9rem;
+    }
+
+    .logo-text-bottom {
+      bottom: 0.9rem;
+    }
+
+    .logo-text-top::before,
+    .logo-text-bottom::before {
+      content: "★";
+      margin: 0 0.4rem;
+      opacity: 0.7;
+    }
+
+    .logo-text-top::after,
+    .logo-text-bottom::after {
+      content: "★";
+      margin: 0 0.4rem;
+      opacity: 0.7;
+    }
+
+    .logo-scene {
+      width: 72%;
+      aspect-ratio: 1 / 1;
+      border-radius: 999px;
+      overflow: hidden;
+      position: relative;
+      box-shadow:
+        0 0 0 1px rgba(0, 0, 0, 0.9),
+        0 0 0 2px rgba(244, 228, 200, 0.18);
+      background: radial-gradient(circle at top, #f6b35a 0, #f47a1f 25%, #1b2735 70%, #050608 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .scene-lake {
+      position: absolute;
+      inset: 45% 0 0;
+      background: linear-gradient(to bottom, rgba(10, 24, 36, 0.2), #050608 70%);
+    }
+
+    .scene-sun {
+      position: absolute;
+      top: 32%;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 26%;
+      aspect-ratio: 1 / 1;
+      border-radius: 999px;
+      background: radial-gradient(circle, #ffe6a3 0, #f6b35a 45%, rgba(244, 122, 31, 0) 70%);
+      filter: blur(0.5px);
+    }
+
+    .scene-treeline {
+      position: absolute;
+      top: 40%;
+      left: 0;
+      right: 0;
+      height: 18%;
+      background: linear-gradient(
+        to right,
+        rgba(5, 10, 8, 0.2),
+        #0b1a11 15%,
+        #173822 40%,
+        #0f2618 70%,
+        rgba(5, 10, 8, 0.2)
+      );
+      clip-path: polygon(
+        0% 100%,
+        3% 60%,
+        6% 80%,
+        10% 55%,
+        14% 85%,
+        18% 50%,
+        22% 78%,
+        26% 52%,
+        30% 82%,
+        34% 58%,
+        38% 80%,
+        42% 53%,
+        46% 77%,
+        50% 50%,
+        54% 78%,
+        58% 55%,
+        62% 82%,
+        66% 52%,
+        70% 80%,
+        74% 58%,
+        78% 83%,
+        82% 55%,
+        86% 78%,
+        90% 60%,
+        94% 82%,
+        100% 100%
+      );
+    }
+
+    .logo-cs {
+      position: relative;
+      z-index: 2;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 1.55rem;
+    }
+
+    .logo-cs-letters {
+      display: flex;
+      gap: 0.2rem;
+      font-size: 2.8rem;
+      font-weight: 800;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: #2b1205;
+      text-shadow:
+        0 0 18px rgba(0, 0, 0, 0.9),
+        0 2px 0 rgba(0, 0, 0, 0.9);
+      position: relative;
+    }
+
+    .logo-cs-letters span {
+      display: inline-block;
+      padding: 0.1rem 0.25rem;
+      background: linear-gradient(135deg, var(--orange), var(--orange-dark));
+      border-radius: 0.25rem;
+      box-shadow:
+        0 10px 25px rgba(0, 0, 0, 0.8),
+        0 0 0 1px rgba(0, 0, 0, 0.9);
+    }
+
+    .logo-icons {
+      display: flex;
+      align-items: center;
+      gap: 0.55rem;
+      padding: 0.35rem 0.7rem;
+      border-radius: 999px;
+      background: rgba(5, 6, 8, 0.85);
+      box-shadow:
+        0 6px 18px rgba(0, 0, 0, 0.8),
+        0 0 0 1px rgba(244, 228, 200, 0.12);
+    }
+
+    .logo-icon {
+      width: 0.9rem;
+      height: 0.9rem;
+      border-radius: 0.2rem;
+      background: linear-gradient(135deg, rgba(244, 122, 31, 0.9), rgba(200, 95, 22, 0.9));
+      position: relative;
+      overflow: hidden;
+    }
+
+    .logo-icon::before {
+      content: "";
+      position: absolute;
+      inset: 0.16rem;
+      border-radius: 0.16rem;
+      border: 1px solid rgba(5, 6, 8, 0.9);
+      opacity: 0.7;
+    }
+
+    .logo-icon-divider {
+      width: 1px;
+      height: 0.9rem;
+      background: linear-gradient(to bottom, transparent, rgba(244, 228, 200, 0.4), transparent);
+      opacity: 0.7;
+    }
+
+    .section {
+      margin-bottom: 3rem;
+    }
+
+    .section-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      gap: 1rem;
+      margin-bottom: 1.5rem;
+      flex-wrap: wrap;
+    }
+
+    .section-title {
+      font-size: 1.2rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--cream);
+    }
+
+    .section-subtitle {
+      font-size: 0.9rem;
+      color: var(--text-muted);
+      max-width: 26rem;
+    }
+
+    .grid {
+      display: grid;
+      gap: 1.5rem;
+    }
+
+    @media (min-width: 720px) {
+      .grid-3 {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+      }
+      .grid-2 {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+    }
+
+    .card {
+      background: var(--card-bg);
+      border-radius: 1rem;
+      padding: 1.25rem 1.2rem;
+      border: 1px solid rgba(244, 228, 200, 0.08);
+      box-shadow: 0 14px 40px rgba(0, 0, 0, 0.7);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .card::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(circle at top left, rgba(244, 122, 31, 0.12), transparent 55%);
+      opacity: 0.9;
+      pointer-events: none;
+    }
+
+    .card h3 {
+      font-size: 1rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      margin-bottom: 0.5rem;
+    }
+
+    .card p {
+      font-size: 0.9rem;
+      color: var(--text-muted);
+      margin-bottom: 0.75rem;
+    }
+
+    .pill-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.4rem;
+      margin-top: 0.25rem;
+    }
+
+    .pill {
+      font-size: 0.75rem;
+      padding: 0.2rem 0.55rem;
+      border-radius: 999px;
+      border: 1px solid rgba(244, 228, 200, 0.18);
+      color: var(--text-muted);
+      background: rgba(5, 6, 8, 0.7);
+    }
+
+    .card-label {
+      font-size: 0.7rem;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--orange);
+      margin-bottom: 0.35rem;
+    }
+
+    .card-highlight {
+      border: 1px solid rgba(244, 122, 31, 0.5);
+      box-shadow:
+        0 18px 50px rgba(0, 0, 0, 0.9),
+        0 0 0 1px rgba(244, 122, 31, 0.4);
+    }
+
+    .contact-strip {
+      margin-top: 0.5rem;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+      font-size: 0.9rem;
+      color: var(--text-muted);
+    }
+
+    .contact-item {
+      display: flex;
+      flex-direction: column;
+      gap: 0.15rem;
+    }
+
+    .contact-label {
+      font-size: 0.75rem;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--orange);
+    }
+
+    .contact-value {
+      font-size: 0.9rem;
+      color: var(--cream);
+    }
+
+    footer {
+      padding: 1.5rem;
+      border-top: 1px solid rgba(244, 228, 200, 0.08);
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      text-align: center;
+    }
+
+    footer span {
+      color: var(--orange);
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <header>
+      <div>Locally owned &amp; operated • <span>Established 2026</span></div>
+    </header>
+
+    <main>
+      <!-- HERO -->
+      <section class="hero">
+        <div class="hero-copy">
+          <h1>
+            Cornerstone <span>Supply</span>
+          </h1>
+          <p class="lead">
+            From heavy-duty hardware to lakeside essentials, Cornerstone keeps your projects moving and your weekends outside.
+          </p>
+
+          <div class="hero-badges">
+            <div class="badge">
+              <span class="badge-dot"></span>
+              Pro-grade hardware
+            </div>
+            <div class="badge">
+              <span class="badge-dot"></span>
+              Outdoor &amp; homestead
+            </div>
+            <div class="badge">
+              <span class="badge-dot"></span>
+              Contractor &amp; DIY friendly
+            </div>
+          </div>
+
+          <div class="hero-cta">
+            <a href="home-watch.html" class="btn-primary" style="text-decoration:none; display:inline-flex; align-items: center;">
+              Home Watch
+              <span>→</span>
+            </a>
+            <a href="bulk.html" class="btn-secondary" style="text-decoration: none; display: inline-flex; align-items: center;">
+              Bulk & Delivery
+              <span>→</span>
+            </a>
+            <small>Serving builders, homeowners, and weekend warriors.</small>
+          </div>
+        </div>
+
+        <!-- LOGO MOCKUP -->
+        <div class="hero-logo">
+          <img src="CSlogotran.png" alt="Cornerstone logo">
+        </div>
+      </section>
+
+      <!-- SECTIONS -->
+      <section class="section" id="about">
+        <div class="section-header">
+          <h2 class="section-title">Built for work &amp; the weekend</h2>
+          <p class="section-subtitle">
+            Cornerstone Supply is your one-stop shop for fasteners, tools, building materials, and everything you need to make the most of your projects.
+          </p>
+        </div>
+
+        <div class="grid grid-3">
+          <article class="card card-highlight">
+            <div class="card-label">Hardware</div>
+            <h3>Contractor-grade essentials</h3>
+            <p>
+              Stocked fasteners, anchors, hand tools, power tool accessories, and job-site consumables so you can grab what you need and get back to work.
+            </p>
+            <div class="pill-row">
+              <span class="pill">Fasteners &amp; anchors</span>
+              <span class="pill">Hand &amp; power tools</span>
+              <span class="pill">Job-site supplies</span>
+            </div>
+          </article>
+
+          <article class="card">
+            <div class="card-label">Outdoor</div>
+            <h3>Lakeside &amp; homestead</h3>
+            <p>
+              Gear for docks, sheds, fencing, firewood, and small projects around the property—built to handle real weather and real use.
+            </p>
+            <div class="pill-row">
+              <span class="pill">Dock &amp; Shoreline</span>
+              <span class="pill">Lawn &amp; Garden</span>
+            </div>
+          </article>
+
+          <article class="card">
+            <div class="card-label">Service</div>
+            <h3>Real help at the counter</h3>
+            <p>
+              Bring your measurements, photos, or old parts—our team helps you match, size, and choose the right hardware the first time.
+            </p>
+            <div class="pill-row">
+              <span class="pill">Part matching</span>
+              <span class="pill">Project guidance</span>
+              <span class="pill">Bulk Landscaping</span>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <section class="section" id="categories">
+        <div class="section-header">
+          <h2 class="section-title">What you’ll find inside</h2>
+          <p class="section-subtitle">
+            A focused mix of hardware, outdoor, and home-support products so you spend less time hunting and more time building.
+          </p>
+        </div>
+
+        <div class="grid grid-2">
+          <article class="card">
+            <h3>Core hardware</h3>
+            <p>
+              Nuts, bolts, screws, brackets, hinges, anchors, chain, rope, and more—organized and labeled so you can find the exact spec you need.
+            </p>
+            <div class="pill-row">
+              <span class="pill">Fasteners Room</span>
+              <span class="pill">Specialty hardware</span>
+              <span class="pill">Metal &amp; brackets</span>
+            </div>
+          </article>
+
+          <article class="card">
+            <h3>Tools &amp; job-site</h3>
+            <p>
+              Everyday tools plus blades, bits, abrasives, safety gear, and consumables that keep your truck and toolboxes ready for the next job.
+            </p>
+            <div class="pill-row">
+              <span class="pill">Hand tools</span>
+              <span class="pill">Power tools &amp; Accessories</span>
+              <span class="pill">Safety &amp; PPE</span>
+            </div>
+          </article>
+
+          <article class="card">
+            <h3>Outdoor &amp; property</h3>
+            <p>
+              Hardware and supplies for docks, decks, sheds, fencing, and small structures around your home, cabin, or campsite.
+            </p>
+            <div class="pill-row">
+              <span class="pill">Deck &amp; Dock Hardware</span>
+              <span class="pill">Fencing &amp; Gates</span>
+              <span class="pill">Storage Solutions</span>
+            </div>
+          </article>
+
+          <article class="card">
+            <h3>Service &amp; support</h3>
+            <p>
+              Need something specific? Ask about bulk quantities, and contractor-friendly solutions tailored to how you work.
+            </p>
+            <div class="pill-row">
+              <span class="pill">Bulk</span>
+              <span class="pill">Project questions</span>
+              <span class="pill">Contracter</span>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <section class="section" id="contact">
+        <div class="section-header">
+          <h2 class="section-title">Plan your next stop</h2>
+          <p class="section-subtitle">
+            Whether you’re mid-project or just sketching ideas, CornerStone Hardware &amp; Outdoor Supply is ready when you pull into the lot.
+          </p>
+        </div>
+
+        <article class="card card-highlight">
+          <h3>Store details</h3>
+          <p>
+            Drop in for a quick pickup, bring a part to match, or walk through a project idea with our team. We’re here for the small fixes and the big builds.
+          </p>
+
+          <div class="contact-strip">
+            <div class="contact-item">
+              <span class="contact-label">Location</span>
+              <span class="contact-value">Nineveh, IN • At the 4-Way</span>
+            </div>
+            <div class="contact-item">
+              <span class="contact-label">Phone</span>
+              <span class="contact-value">(317) 933-5916</span>
+            </div>
+            <div class="contact-item">
+              <span class="contact-label">Hours (subject to change per season) </span>
+              <span class="contact-value">Mon–Thurs -- 8:00 AM – 7:00 PM • Fri -- 8:00 AM - 6:00 PM• Sat -- 8:00 AM - 4:00 PM</span>
+            </div>
+            <div class="contact-item">
+              <span class="contact-label">E-Mail </span>
+              <span class="contact-value">General@cornerstonesupply.net</span>
+            </div>
+            
+          </div>
+        </article>
+      </section>
+    </main>
+
+    <footer>
+      <div>
+        © 2026 <span>CS Hardware &amp; Outdoor Supply</span>. All rights reserved.
+      </div>
+    </footer>
+  </div>
+</body>
+</html>

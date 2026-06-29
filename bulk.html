@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Bulk & Delivery • CS Hardware & Outdoor Supply</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <style>
+    /* Reuse homepage variables */
+    :root {
+      --bg-dark: #0b0d10;
+      --cream: #f4e4c8;
+      --orange: #f47a1f;
+      --orange-dark: #c85f16;
+      --green: #1f4b2c;
+      --accent-blue: #2b5f7a;
+      --text-muted: #c0c4cc;
+      --card-bg: #151920;
+    }
+
+    body {
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background: radial-gradient(circle at top, #1b2735 0, #090a0f 55%, #050608 100%);
+      color: var(--cream);
+      line-height: 1.6;
+      margin: 0;
+    }
+
+    header {
+      text-align: center;
+      padding: 1.5rem;
+      font-size: 0.9rem;
+      color: var(--text-muted);
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    header span {
+      color: var(--orange);
+      font-weight: 600;
+    }
+
+    main {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 1.5rem;
+    }
+
+    h1 {
+      font-size: clamp(2.2rem, 4vw, 3rem);
+      text-align: center;
+      margin-bottom: 1rem;
+      color: var(--orange);
+    }
+
+    .lead {
+      text-align: center;
+      color: var(--text-muted);
+      max-width: 700px;
+      margin: 0 auto 2rem;
+    }
+
+    .grid {
+      display: grid;
+      gap: 1.5rem;
+    }
+
+    @media (min-width: 720px) {
+      .grid-3 {
+        grid-template-columns: repeat(3, 1fr);
+      }
+    }
+
+    .card {
+      background: var(--card-bg);
+      border-radius: 1rem;
+      padding: 1.25rem;
+      border: 1px solid rgba(244, 228, 200, 0.08);
+      box-shadow: 0 14px 40px rgba(0, 0, 0, 0.7);
+    }
+
+    .card h3 {
+      font-size: 1.1rem;
+      color: var(--cream);
+      margin-bottom: 0.5rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .card p {
+      font-size: 0.9rem;
+      color: var(--text-muted);
+    }
+
+    .highlight {
+      border: 1px solid rgba(244, 122, 31, 0.5);
+      box-shadow: 0 18px 50px rgba(0, 0, 0, 0.9);
+    }
+
+    footer {
+      text-align: center;
+      padding: 1.5rem;
+      border-top: 1px solid rgba(244, 228, 200, 0.08);
+      font-size: 0.8rem;
+      color: var(--text-muted);
+    }
+
+    footer span {
+      color: var(--orange);
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div>CS Hardware & Outdoor Supply • <span>Bulk &amp; Delivery</span></div>
+  </header>
+
+  <main>
+    <h1>Bulk &amp; Delivery</h1>
+    <p class="lead">
+      Bulk materials are priced per 1/2 cubic yard (1 scoop). Delivery is available, price dependent on address. You tell us when and where to drop it and we'll be there on time, every time!
+    </p>
+
+    <section class="grid grid-3">
+      <article class="card highlight">
+        <h3>Bulk Material</h3>
+        <li>Black Mulch</li>
+        <li>Brown Mulch</li>
+        <li>Sand</li>
+        <li>Pea Gravel</li>
+        <li>#8 Stone</li>
+        <li>#2 Stone</li>
+        <li>#12 Stone</li>
+        <li>#53 Stone</li>
+        <li>Rip-Rap</li>
+        <li>River Rock</li>
+        <li>Top Soil</li>
+        <li>Compost</li>
+      </article>
+
+      <article class="card highlight">
+        <h3>Delivery</h3>
+        <p>We deliver locally to Nineveh and surrounding areas. Prices vary depending on address. Call today for a free quote!</p>
+        <p>Can deliver 2 yards or 3 ton of stone and up to 5 yards of mulch per delivery.</p>
+      </article>
+
+      <article class="card highlight">
+        <h3>Propane</h3>
+        <p>We fill all sizes of tanks and RV's with Keystone Cooperative propane. We can do 20lb &amp; 30lb tank pick-up and delivery.</p>
+      </article>
+    </section>
+
+    <section style="margin-top:3rem;">
+      <h2 style="text-align:center; color:var(--orange); text-transform:uppercase; letter-spacing:0.12em;">All Bulk Sales Final!!</h2>
+      <p class="lead"></p>
+      <div style="text-align:center; margin-top:1.5rem;">
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    © 2026 <span>CS Hardware & Outdoor Supply</span>. All rights reserved.
+  </footer>
+</body>
+</html>
